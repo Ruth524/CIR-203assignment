@@ -1,0 +1,37 @@
+def create_node(name, adm, grades):
+    return {
+        "name": name,
+        "adm": adm,
+        "grades": grades,   
+        "next": None
+    }
+
+def insert(head, name, adm, grades):
+    new_node = create_node(name, adm, grades)
+
+    if head is None:
+        return new_node   
+
+    current = head
+    while current["next"] is not None:
+        current = current["next"]
+
+    current["next"] = new_node
+    return head
+
+def display(head):
+    current = head
+    while current is not None:
+        print("Name:", current["name"])
+        print("Adm:", current["adm"])
+        print("Grades:", current["grades"])
+        print("-------------------")
+        current = current["next"]
+
+head = None
+
+head = insert(head, "Stephen", "ADM001", [78, 85, 90])
+head = insert(head, "Kevin", "ADM002", [65, 72, 81])
+head = insert(head, "Miles", "ADM003", [88, 91, 94])
+
+display(head)
